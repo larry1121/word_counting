@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7529335719399218"
+     crossorigin="anonymous"></script>
+    <title>Letter Counter</title>
+    <style>
+      textarea, button, #output {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+      }
+      body {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center;">글자수 세기</h1>
+    <textarea id="input"></textarea><br>
+  
+    <p id="output"></p>
+
+    <script>
+      document.getElementById("input").addEventListener("input",countLetters);
+      function countLetters() {
+        var input = document.getElementById("input").value;
+        var output = document.getElementById("output");
+        var letterCount = input.length;
+        var wordCount = input.split(" ").length;
+        var lineCount = input.split("\n").length;
+        var noSpaces = input.replace(/\s/g, "");
+        var noSpaceCount = noSpaces.length;
+        output.innerHTML = "공백 포함: " + letterCount + "<br>" + "공백 제외: " + noSpaceCount + "<br>" + "단어 수: " + wordCount + "<br>" ;
+      }
+    </script>
+  </body>
+</html>
