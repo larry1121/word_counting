@@ -1,13 +1,45 @@
 <html>
   <head>
+    <meta charset="UTF-8">
+    <title>글자수 세기</title>
+    <meta name="description" content="총알 글자수 세기">
+    <meta name="keywords" content="글자수,세기,word,counting">
+    <meta name="author" content="growing-up">
+    <meta property="og:title" content="글자수 세기">
+    <meta property="og:description" content="">
+    <!-- <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3513/3513990.png"> -->
+    <meta property="og:url" content="https://word-counting.netlify.app/">
+    <meta name="twitter:title" content="글자수 세기">
+    <meta name="twitter:description" content="총알 글자수 세기">
+    <!-- <meta name="twitter:image" content="https://cdn-icons-png.flaticon.com/512/3513/3513990.png"> -->
+    <meta name="twitter:card" content="summary_large_image">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7529335719399218"
      crossorigin="anonymous"></script>
     <title>Letter Counter</title>
     <style>
+          #copyright {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        font-size: 12px;
+        color: #999;
+      }
+
+      #copyright:before {
+        content: "Growing Up";
+        font-weight: bold;
+      }
       textarea, button, #output {
         display: block;
         margin: 0 auto;
         text-align: center;
+      }
+      textarea{
+        display: block;
+        margin: 0 auto;
+        width: 80%;
+        height: 200px;
+        
       }
       body {
         background-color: lightblue;
@@ -20,8 +52,14 @@
   
     <p id="output"></p>
 
+    <button id="reset">Reset</button>
+    <div id="copyright">
+      &copy; 2023 Growing Up
+    </div>
     <script>
       document.getElementById("input").addEventListener("input",countLetters);
+      document.getElementById("reset").addEventListener("click", resetInput);
+      
       function countLetters() {
         var input = document.getElementById("input").value;
         var output = document.getElementById("output");
@@ -31,6 +69,16 @@
         var noSpaces = input.replace(/\s/g, "");
         var noSpaceCount = noSpaces.length;
         output.innerHTML = "공백 포함: " + letterCount + "<br>" + "공백 제외: " + noSpaceCount + "<br>" + "단어 수: " + wordCount + "<br>" ;
+      }
+
+      function resetInput() {
+        document.getElementById("input").value = "";
+        var letterCount = 0;
+        var wordCount = 0;
+        var noSpaceCount = 0;
+        var output = document.getElementById("output");
+        output.innerHTML = "공백 포함: " + letterCount + "<br>" + "공백 제외: " + noSpaceCount + "<br>" + "단어 수: " + wordCount + "<br>" ;
+
       }
     </script>
   </body>
